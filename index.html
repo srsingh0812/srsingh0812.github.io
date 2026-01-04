@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahul Singh - Data Analyst & ML Enthusiast</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .greeting {
+            font-size: 1.2rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, #667eea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            animation: fadeInUp 0.8s 0.2s forwards;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            color: #999;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s 0.4s forwards;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #aaa;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s 0.6s forwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s 0.8s forwards;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            border: 2px solid #667eea;
+            color: #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, #fff 0%, #667eea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #bbb;
+            font-size: 1.05rem;
+        }
+
+        .skills-section h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .skills-category {
+            margin-bottom: 2rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-item {
+            background: rgba(102, 126, 234, 0.15);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            color: #bbb;
+        }
+
+        .skill-item:hover {
+            background: rgba(102, 126, 234, 0.25);
+            border-color: #667eea;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .experience-timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #667eea 0%, rgba(102, 126, 234, 0.2) 100%);
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid #0a0a0a;
+        }
+
+        .experience-item h3 {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-meta {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .experience-location {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-item li {
+            color: #aaa;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .experience-item li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .project-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-content {
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        .project-content h3 {
+            margin-bottom: 1rem;
+            color: #fff;
+            font-size: 1.4rem;
+        }
+
+        .project-content p {
+            color: #aaa;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-highlights {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-highlights li {
+            color: #bbb;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .project-highlights li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: #fff;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .cert-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .cert-card:hover {
+            background: rgba(102, 126, 234, 0.1);
+            border-color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        .cert-card h4 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        .cert-issuer {
+            color: #667eea;
+            font-size: 0.9rem;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content p {
+            color: #bbb;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: #667eea;
+            border-color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #666;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .experience-timeline {
+                padding-left: 2rem;
+            }
+
+            .experience-item {
+                padding-left: 1.5rem;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">Rahul Singh</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="greeting">Hi, my name is</div>
+                <h1>Rahul Singh</h1>
+                <h2>Data Analyst → ML Engineer</h2>
+                <p class="hero-description">
+                    4+ years turning operational data into actionable insights. Expert in SQL, Python, and building 
+                    ML-ready pipelines. Proven track record of delivering 75% efficiency gains through data automation 
+                    and predictive analytics.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="https://github.com/srsingh0812/itsm-incident-analytics" target="_blank" class="btn btn-secondary">GitHub Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm a Data Analyst with 4+ years of hands-on experience transforming complex operational data into business value. 
+                        At Orange Business Services, I've built end-to-end analytics solutions—from extracting data across multiple systems 
+                        to deploying real-time dashboards that drive strategic decisions.
+                    </p>
+                    <p>
+                        My expertise lies in the full analytics lifecycle: exploratory data analysis, SQL-based data engineering, feature 
+                        engineering for ML, and translating insights into measurable business outcomes. I've delivered proven impact—reducing 
+                        manual reporting by 75%, resolving 400+ data quality issues, and preventing operational penalties by identifying 
+                        discrepancies across 280+ network paths.
+                    </p>
+                    <p>
+                        Now, I'm leveraging this foundation to build predictive models. My recent end-to-end ML project demonstrates 
+                        production-ready skills: data preprocessing, feature engineering, and preparing datasets for supervised learning 
+                        (classification and regression). I'm seeking ML/Data Science roles where I can apply statistical modeling and 
+                        machine learning to solve high-impact business problems.
+                    </p>
+                </div>
+                <div class="skills-section">
+                    <div class="skills-category">
+                        <h3>Machine Learning & Statistics</h3>
+                        <div class="skills">
+                            <span class="skill-item">Supervised Learning</span>
+                            <span class="skill-item">Classification & Regression</span>
+                            <span class="skill-item">Feature Engineering</span>
+                            <span class="skill-item">Model Evaluation</span>
+                            <span class="skill-item">Statistical Analysis</span>
+                            <span class="skill-item">Predictive Modeling</span>
+                            <span class="skill-item">Scikit-learn</span>
+                        </div>
+                    </div>
+                    <div class="skills-category">
+                        <h3>Data Engineering & Analysis</h3>
+                        <div class="skills">
+                            <span class="skill-item">Python (Pandas, NumPy)</span>
+                            <span class="skill-item">SQL (PostgreSQL)</span>
+                            <span class="skill-item">Data Pipelines</span>
+                            <span class="skill-item">ETL/ELT</span>
+                            <span class="skill-item">Data Cleaning</span>
+                            <span class="skill-item">EDA</span>
+                            <span class="skill-item">Root Cause Analysis</span>
+                        </div>
+                    </div>
+                    <div class="skills-category">
+                        <h3>Visualization & Business Intelligence</h3>
+                        <div class="skills">
+                            <span class="skill-item">Power BI (PL-300 Certified)</span>
+                            <span class="skill-item">Excel (Power Query)</span>
+                            <span class="skill-item">Dashboard Design</span>
+                            <span class="skill-item">KPI Development</span>
+                            <span class="skill-item">Stakeholder Communication</span>
+                            <span class="skill-item">Git/GitHub</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <h3>Service Management Specialist (Data & Reporting Analyst)</h3>
+                    <div class="experience-meta">Orange Business Services • Feb 2022 – Present</div>
+                    <div class="experience-location">Gurgaon, India</div>
+                    <ul>
+                        <li>Performed EDA by extracting and integrating operational data from multiple systems to identify trends, anomalies, and root causes affecting business KPIs</li>
+                        <li>Built real-time and periodic Power BI dashboards for KPI reporting, improving operational decision-making across delivery and management teams</li>
+                        <li>Leveraged Python and SQL to solve complex business problems, optimize workflows, and improve service efficiency by 30%+</li>
+                        <li>Embedded data-driven insights into business actions, resulting in improved SLA adherence and measurable operational outcomes</li>
+                        <li>Defined and tracked business and operational KPIs, establishing performance baselines and monitoring progress against goals</li>
+                        <li>Gathered analytics requirements from cross-functional stakeholders (business, marketing, operations, PMO) and translated them into actionable dashboards</li>
+                        <li>Prepared analytical reports and executive summaries synthesizing complex data into strategic recommendations for leadership</li>
+                        <li>Led analytics-driven initiatives across delivery, operations, and engineering teams to drive data-backed process improvements</li>
+                        <li>Engineered ML-ready features and prepared datasets for supervised learning models (SLA breach prediction, resolution time forecasting)</li>
+                        <li><strong>Impact:</strong> Reduced manual reporting by 75% through SQL automation | Resolved 400+ data quality issues | Prevented operational penalties by identifying discrepancies in 280+ network paths | Awarded "Changemaker 2025" for analytics excellence</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>R&D Engineer (Trainee)</h3>
+                    <div class="experience-meta">Logic Fruit Technologies • Jul 2021 – Dec 2021</div>
+                    <div class="experience-location">Gurgaon, India</div>
+                    <ul>
+                        <li>Analyzed experimental and prototype datasets to support engineering decision-making</li>
+                        <li>Performed data validation, reporting, and technical documentation</li>
+                        <li>Collaborated with engineering teams to present analytical findings</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Project</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">📊</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>ITSM Incident Analytics: End-to-End ML Pipeline</h3>
+                        <p>Production-ready analytics and ML pipeline transforming 50,000+ raw ITSM incidents into predictive modeling datasets. Demonstrates full data science workflow from messy data to deployment-ready features.</p>
+                        
+                        <div class="project-highlights">
+                            <li><strong>Data Engineering:</strong> Extracted and cleaned raw incident data, handling missing timestamps, invalid states, and inconsistent SLA flags across multiple data sources</li>
+                            <li><strong>Feature Engineering:</strong> Created 15+ ML-ready features including MTTR calculations, SLA breach indicators, incident aging buckets, priority encodings, and temporal patterns</li>
+                            <li><strong>SQL Analytics:</strong> Implemented deterministic KPI logic (SLA compliance, resolution metrics, backlog trends) ensuring auditability and reproducibility</li>
+                            <li><strong>ML Readiness:</strong> Prepared datasets for supervised learning: binary classification (SLA breach prediction) and regression (resolution time estimation)</li>
+                            <li><strong>Visualization:</strong> Built interactive Power BI dashboards with Row-Level Security (RLS) for role-based data access and real-time KPI monitoring</li>
+                            <li><strong>Business Impact:</strong> Enabled proactive incident management and resource allocation through data-driven insights</li>
+                        </div>
+
+                        <div class="project-tags">
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Feature Engineering</span>
+                            <span class="tag">Python (Pandas)</span>
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">Data Pipelines</span>
+                            <span class="tag">Power BI</span>
+                            <span class="tag">ETL</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="https://github.com/srsingh0812/itsm-incident-analytics" target="_blank" class="project-link">
+                                <span>GitHub</span>
+                                <span>→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" style="background: rgba(255, 255, 255, 0.02);">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certifications-grid">
+                <div class="cert-card">
+                    <h4>Power BI Data Analyst Associate (PL-300)</h4>
+                    <div class="cert-issuer">Microsoft</div>
+                </div>
+                <div class="cert-card">
+                    <h4>Azure Fundamentals (AZ-900)</h4>
+                    <div class="cert-issuer">Microsoft</div>
+                </div>
+                <div class="cert-card">
+                    <h4>Develop AI Solutions in Azure (AI-102T00)</h4>
+                    <div class="cert-issuer">Microsoft</div>
+                </div>
+                <div class="cert-card">
+                    <h4>Certified Associate in Project Management (CAPM®)</h4>
+                    <div class="cert-issuer">PMI</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <p>
+                    I'm actively seeking Data Science, ML Engineer, or Analytics roles where I can leverage my unique blend 
+                    of production analytics experience and ML skills. Open to opportunities in predictive modeling, data 
+                    engineering, or business analytics.
+                </p>
+                <div class="social-links">
+                    <a href="https://github.com/srsingh0812" target="_blank" class="social-link">
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://linkedin.com/in/srsingh0812" target="_blank" class="social-link">
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="mailto:srsingh0812@gmail.com" class="social-link">
+                        <span>Email</span>
+                    </a>
+                    <a href="tel:+917905471230" class="social-link">
+                        <span>Phone</span>
+                    </a>
+                </div>
+                <a href="mailto:srsingh0812@gmail.com" class="btn btn-primary">Say Hello</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Rahul Singh. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        let lastScroll = 0;
+        const nav = document.querySelector('nav');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                nav.style.transform = 'translateY(-100%)';
+            } else {
+                nav.style.transform = 'translateY(0)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            if (!section.classList.contains('hero')) {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            }
+        });
+    </script>
+</body>
+</html>

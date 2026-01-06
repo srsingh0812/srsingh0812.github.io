@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rahul Singh - Data Analyst & ML Enthusiast</title>
+    <title>Rahul Singh - ML Engineer & Data Scientist</title>
     <style>
         * {
             margin: 0;
@@ -114,10 +114,34 @@
         .hero-description {
             font-size: 1.1rem;
             color: #aaa;
-            max-width: 600px;
+            max-width: 650px;
             margin-bottom: 2rem;
             opacity: 0;
             animation: fadeInUp 0.8s 0.6s forwards;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s 0.7s forwards;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #999;
         }
 
         .cta-buttons {
@@ -183,6 +207,19 @@
             font-size: 1.05rem;
         }
 
+        .highlight-box {
+            background: rgba(102, 126, 234, 0.1);
+            border-left: 4px solid #667eea;
+            padding: 1rem 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box p {
+            color: #ddd;
+            margin: 0;
+        }
+
         .skills-section h3 {
             color: #667eea;
             margin-bottom: 1rem;
@@ -216,9 +253,160 @@
             transform: translateY(-2px);
         }
 
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .project-icon {
+            font-size: 1.8rem;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .project-content {
+            padding: 2.5rem;
+        }
+
+        .project-content h3 {
+            margin-bottom: 0.5rem;
+            color: #fff;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .project-subtitle {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-content p {
+            color: #aaa;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .ml-metrics {
+            background: rgba(102, 126, 234, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .ml-metrics h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .metric-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 6px;
+        }
+
+        .metric-label {
+            color: #999;
+            font-size: 0.85rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .metric-value {
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .project-phases {
+            margin-bottom: 2rem;
+        }
+
+        .phase-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+
+        .phase-title {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-desc {
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+            font-weight: 600;
+        }
+
+        .project-link:hover {
+            color: #fff;
+        }
+
         .experience-timeline {
             position: relative;
             padding-left: 3rem;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .experience-timeline::before {
@@ -274,10 +462,11 @@
 
         .experience-item li {
             color: #aaa;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
             padding-left: 1.5rem;
             position: relative;
             font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         .experience-item li::before {
@@ -285,104 +474,6 @@
             position: absolute;
             left: 0;
             color: #667eea;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
-            border-color: #667eea;
-        }
-
-        .project-icon {
-            font-size: 1.8rem;
-            margin-right: 0.5rem;
-            vertical-align: middle;
-        }
-
-        .project-content {
-            padding: 2rem;
-        }
-
-        .project-content h3 {
-            margin-bottom: 1rem;
-            color: #fff;
-            font-size: 1.4rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .project-content p {
-            color: #aaa;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .project-highlights {
-            margin-bottom: 1.5rem;
-        }
-
-        .project-highlights li {
-            color: #bbb;
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            position: relative;
-            font-size: 0.9rem;
-        }
-
-        .project-highlights li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: #667eea;
-        }
-
-        .project-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
-
-        .tag {
-            background: rgba(102, 126, 234, 0.2);
-            color: #667eea;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            border: 1px solid rgba(102, 126, 234, 0.3);
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-link {
-            color: #667eea;
-            text-decoration: none;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: color 0.3s;
-        }
-
-        .project-link:hover {
-            color: #fff;
         }
 
         .certifications-grid {
@@ -482,6 +573,11 @@
                 font-size: 1.5rem;
             }
 
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
             .about-content {
                 grid-template-columns: 1fr;
             }
@@ -506,6 +602,10 @@
             .container {
                 padding: 0 1.5rem;
             }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -516,8 +616,8 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -526,17 +626,31 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <div class="greeting">Hi, my name is</div>
+                <div class="greeting">Hi, I'm</div>
                 <h1>Rahul Singh</h1>
-                <h2>Data Analyst → ML Engineer</h2>
+                <h2>ML Engineer & Data Scientist</h2>
                 <p class="hero-description">
-                    4+ years turning operational data into actionable insights. Expert in SQL, Python, and building 
-                    ML-ready pipelines. Proven track record of delivering 75% efficiency gains through data automation 
-                    and predictive analytics.
+                    Building production-ready machine learning pipelines that solve real business problems. 
+                    Specialized in predictive modeling, feature engineering, and end-to-end ML workflows. 
+                    4+ years turning complex data into actionable predictions with 96%+ model accuracy.
                 </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Data Points Processed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99.98%</div>
+                        <div class="stat-label">Model R² Score</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">75%</div>
+                        <div class="stat-label">Efficiency Gain</div>
+                    </div>
+                </div>
                 <div class="cta-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="https://github.com/srsingh0812/itsm-incident-analytics" target="_blank" class="btn btn-secondary">GitHub Project</a>
+                    <a href="#projects" class="btn btn-primary">View ML Projects</a>
+                    <a href="https://github.com/srsingh0812/itsm-incident-analytics" target="_blank" class="btn btn-secondary">GitHub Repository</a>
                 </div>
             </div>
         </div>
@@ -548,57 +662,142 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        I'm a Data Analyst with 4+ years of hands-on experience transforming complex operational data into business value. 
-                        At Orange Business Services, I've built end-to-end analytics solutions—from extracting data across multiple systems 
-                        to deploying real-time dashboards that drive strategic decisions.
+                        I'm a Machine Learning Engineer with a strong foundation in production analytics and data engineering. 
+                        My journey from operational analytics to ML has given me a unique perspective: I understand not just 
+                        how to build models, but how to deploy them in real-world business environments.
                     </p>
                     <p>
-                        My expertise lies in the full analytics lifecycle: exploratory data analysis, SQL-based data engineering, feature 
-                        engineering for ML, and translating insights into measurable business outcomes. I've delivered proven impact—reducing 
-                        manual reporting by 75%, resolving 400+ data quality issues, and preventing operational penalties by identifying 
-                        discrepancies across 280+ network paths.
+                        At Orange Business Services, I've built end-to-end ML pipelines—from raw data extraction to 
+                        production-ready predictive models. My work focuses on leakage prevention, time-aware validation, 
+                        and explainable AI that stakeholders can trust and act upon.
                     </p>
+                    <div class="highlight-box">
+                        <p><strong>Recent Achievement:</strong> Built an end-to-end ML pipeline achieving 100% recall for SLA breach 
+                        prediction and 4.64-hour MAE for resolution time forecasting. Feature importance analysis revealed that 
+                        incident aging accounts for 96-99% of predictions, leading to data-driven operational recommendations.</p>
+                    </div>
                     <p>
-                        Now, I'm leveraging this foundation to build predictive models. My recent end-to-end ML project demonstrates 
-                        production-ready skills: data preprocessing, feature engineering, and preparing datasets for supervised learning 
-                        (classification and regression). I'm seeking ML/Data Science roles where I can apply statistical modeling and 
-                        machine learning to solve high-impact business problems.
+                        I'm passionate about supervised learning, feature engineering, and building ML systems that create 
+                        measurable business value. My approach combines rigorous data science methodology with practical 
+                        software engineering to deliver models that work in production, not just in notebooks.
                     </p>
                 </div>
                 <div class="skills-section">
                     <div class="skills-category">
-                        <h3>Machine Learning & Statistics</h3>
+                        <h3>Machine Learning & AI</h3>
                         <div class="skills">
                             <span class="skill-item">Supervised Learning</span>
-                            <span class="skill-item">Classification & Regression</span>
+                            <span class="skill-item">Classification Models</span>
+                            <span class="skill-item">Regression Models</span>
                             <span class="skill-item">Feature Engineering</span>
                             <span class="skill-item">Model Evaluation</span>
-                            <span class="skill-item">Statistical Analysis</span>
-                            <span class="skill-item">Predictive Modeling</span>
-                            <span class="skill-item">Scikit-learn</span>
+                            <span class="skill-item">Hyperparameter Tuning</span>
+                            <span class="skill-item">Explainable AI</span>
+                            <span class="skill-item">Time-Series Analysis</span>
                         </div>
                     </div>
                     <div class="skills-category">
-                        <h3>Data Engineering & Analysis</h3>
+                        <h3>Programming & Libraries</h3>
                         <div class="skills">
-                            <span class="skill-item">Python (Pandas, NumPy)</span>
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">Scikit-learn</span>
+                            <span class="skill-item">Pandas</span>
+                            <span class="skill-item">NumPy</span>
                             <span class="skill-item">SQL (PostgreSQL)</span>
+                            <span class="skill-item">Git/GitHub</span>
+                            <span class="skill-item">Jupyter Notebooks</span>
+                        </div>
+                    </div>
+                    <div class="skills-category">
+                        <h3>Data Engineering & MLOps</h3>
+                        <div class="skills">
                             <span class="skill-item">Data Pipelines</span>
                             <span class="skill-item">ETL/ELT</span>
-                            <span class="skill-item">Data Cleaning</span>
-                            <span class="skill-item">EDA</span>
-                            <span class="skill-item">Root Cause Analysis</span>
+                            <span class="skill-item">Data Preprocessing</span>
+                            <span class="skill-item">Leakage Prevention</span>
+                            <span class="skill-item">Power BI</span>
+                            <span class="skill-item">Azure (AZ-900, AI-102)</span>
                         </div>
                     </div>
-                    <div class="skills-category">
-                        <h3>Visualization & Business Intelligence</h3>
-                        <div class="skills">
-                            <span class="skill-item">Power BI (PL-300 Certified)</span>
-                            <span class="skill-item">Excel (Power Query)</span>
-                            <span class="skill-item">Dashboard Design</span>
-                            <span class="skill-item">KPI Development</span>
-                            <span class="skill-item">Stakeholder Communication</span>
-                            <span class="skill-item">Git/GitHub</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured ML Project</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3><span class="project-icon">🤖</span> ITSM Incident Analytics: End-to-End ML Pipeline</h3>
+                        <p class="project-subtitle">Production-Ready Predictive Modeling for SLA Management</p>
+                        <p>
+                            Comprehensive machine learning pipeline built on 50,000+ real ITSM incidents, demonstrating 
+                            the complete data science lifecycle: data engineering, exploratory analysis, feature engineering, 
+                            model development, and explainability. Designed with production deployment and enterprise governance in mind.
+                        </p>
+
+                        <div class="ml-metrics">
+                            <h4>🎯 Model Performance</h4>
+                            <div class="metrics-grid">
+                                <div class="metric-item">
+                                    <div class="metric-label">SLA Breach Classification</div>
+                                    <div class="metric-value">100% Recall</div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-label">ROC-AUC Score</div>
+                                    <div class="metric-value">0.99999</div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-label">Resolution Time MAE</div>
+                                    <div class="metric-value">4.64 hrs</div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-label">Regression R² Score</div>
+                                    <div class="metric-value">0.9997</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-phases">
+                            <div class="phase-item">
+                                <div class="phase-title">🔧 Phase 1: Data Engineering</div>
+                                <div class="phase-desc">Built clean, auditable data foundation with deterministic SQL logic for SLA compliance, MTTR, and incident aging metrics</div>
+                            </div>
+                            <div class="phase-item">
+                                <div class="phase-title">📊 Phase 2: Exploratory Analysis</div>
+                                <div class="phase-desc">Performed comprehensive EDA, validated business metrics, and identified high-impact operational signals</div>
+                            </div>
+                            <div class="phase-item">
+                                <div class="phase-title">🎨 Phase 3: BI & Feature Validation</div>
+                                <div class="phase-desc">Built Power BI dashboards with Row-Level Security and validated ML-ready features visually</div>
+                            </div>
+                            <div class="phase-item">
+                                <div class="phase-title">🤖 Phase 4: Machine Learning</div>
+                                <div class="phase-desc">Developed Random Forest models for classification (SLA breach) and regression (resolution time) with explainability analysis showing 96-99% feature importance on incident aging</div>
+                            </div>
+                        </div>
+
+                        <div class="project-tags">
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Random Forest</span>
+                            <span class="tag">Classification</span>
+                            <span class="tag">Regression</span>
+                            <span class="tag">Feature Engineering</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Scikit-learn</span>
+                            <span class="tag">Pandas</span>
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">Power BI</span>
+                            <span class="tag">Explainable AI</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="https://github.com/srsingh0812/itsm-incident-analytics" target="_blank" class="project-link">
+                                <span>View on GitHub</span>
+                                <span>→</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -623,60 +822,20 @@
                         <li>Gathered analytics requirements from cross-functional stakeholders (business, marketing, operations, PMO) and translated them into actionable dashboards</li>
                         <li>Prepared analytical reports and executive summaries synthesizing complex data into strategic recommendations for leadership</li>
                         <li>Led analytics-driven initiatives across delivery, operations, and engineering teams to drive data-backed process improvements</li>
-                        <li>Engineered ML-ready features and prepared datasets for supervised learning models (SLA breach prediction, resolution time forecasting)</li>
+                        <li><strong>Engineered ML-ready features and prepared datasets for supervised learning models (SLA breach prediction, resolution time forecasting)</strong></li>
                         <li><strong>Impact:</strong> Reduced manual reporting by 75% through SQL automation | Resolved 400+ data quality issues | Prevented operational penalties by identifying discrepancies in 280+ network paths | Awarded "Changemaker 2025" for analytics excellence</li>
                     </ul>
                 </div>
 
                 <div class="experience-item">
-                    <h3>R&D Engineer (Trainee)</h3>
+                    <h3>R&D Engineer (Data Analysis)</h3>
                     <div class="experience-meta">Logic Fruit Technologies • Jul 2021 – Dec 2021</div>
                     <div class="experience-location">Gurgaon, India</div>
                     <ul>
-                        <li>Analyzed experimental and prototype datasets to support engineering decision-making</li>
-                        <li>Performed data validation, reporting, and technical documentation</li>
-                        <li>Collaborated with engineering teams to present analytical findings</li>
+                        <li>Analyzed experimental datasets using statistical methods to support engineering decision-making</li>
+                        <li>Performed data validation, quality checks, and technical documentation for research projects</li>
+                        <li>Collaborated with engineering teams to present data-driven findings and recommendations</li>
                     </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Project</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3><span class="project-icon">📊</span> ITSM Incident Analytics: End-to-End ML Pipeline</h3>
-                        <p>Production-ready analytics and ML pipeline transforming 50,000+ raw ITSM incidents into predictive modeling datasets. Demonstrates full data science workflow from messy data to deployment-ready features.</p>
-                        
-                        <div class="project-highlights">
-                            <li><strong>Data Engineering:</strong> Extracted and cleaned raw incident data, handling missing timestamps, invalid states, and inconsistent SLA flags across multiple data sources</li>
-                            <li><strong>Feature Engineering:</strong> Created 15+ ML-ready features including MTTR calculations, SLA breach indicators, incident aging buckets, priority encodings, and temporal patterns</li>
-                            <li><strong>SQL Analytics:</strong> Implemented deterministic KPI logic (SLA compliance, resolution metrics, backlog trends) ensuring auditability and reproducibility</li>
-                            <li><strong>ML Readiness:</strong> Prepared datasets for supervised learning: binary classification (SLA breach prediction) and regression (resolution time estimation)</li>
-                            <li><strong>Visualization:</strong> Built interactive Power BI dashboards with Row-Level Security (RLS) for role-based data access and real-time KPI monitoring</li>
-                            <li><strong>Business Impact:</strong> Enabled proactive incident management and resource allocation through data-driven insights</li>
-                        </div>
-
-                        <div class="project-tags">
-                            <span class="tag">Machine Learning</span>
-                            <span class="tag">Feature Engineering</span>
-                            <span class="tag">Python (Pandas)</span>
-                            <span class="tag">PostgreSQL</span>
-                            <span class="tag">Data Pipelines</span>
-                            <span class="tag">Power BI</span>
-                            <span class="tag">ETL</span>
-                        </div>
-
-                        <div class="project-links">
-                            <a href="https://github.com/srsingh0812/itsm-incident-analytics" target="_blank" class="project-link">
-                                <span>GitHub</span>
-                                <span>→</span>
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -687,7 +846,7 @@
             <h2 class="section-title">Certifications</h2>
             <div class="certifications-grid">
                 <div class="cert-card">
-                    <h4>Power BI Data Analyst Associate (PL-300)</h4>
+                    <h4>Develop AI Solutions in Azure (AI-102T00)</h4>
                     <div class="cert-issuer">Microsoft</div>
                 </div>
                 <div class="cert-card">
@@ -695,7 +854,7 @@
                     <div class="cert-issuer">Microsoft</div>
                 </div>
                 <div class="cert-card">
-                    <h4>Develop AI Solutions in Azure (AI-102T00)</h4>
+                    <h4>Power BI Data Analyst Associate (PL-300)</h4>
                     <div class="cert-issuer">Microsoft</div>
                 </div>
                 <div class="cert-card">
@@ -711,9 +870,8 @@
             <h2 class="section-title">Get In Touch</h2>
             <div class="contact-content">
                 <p>
-                    I'm actively seeking Data Science, ML Engineer, or Analytics roles where I can leverage my unique blend 
-                    of production analytics experience and ML skills. Open to opportunities in predictive modeling, data 
-                    engineering, or business analytics.
+                    I'm actively seeking <strong>Machine Learning Engineer, Data Scientist, or ML Ops roles</strong> 
+                    where I can build production-ready predictive models and deliver measurable business impact through AI/ML.
                 </p>
                 <div class="social-links">
                     <a href="https://github.com/srsingh0812" target="_blank" class="social-link">
@@ -729,14 +887,14 @@
                         <span>Phone</span>
                     </a>
                 </div>
-                <a href="mailto:srsingh0812@gmail.com" class="btn btn-primary">Say Hello</a>
+                <a href="mailto:srsingh0812@gmail.com" class="btn btn-primary">Let's Connect</a>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Rahul Singh. All rights reserved.</p>
+            <p>&copy; 2025 Rahul Singh. ML Engineer & Data Scientist. All rights reserved.</p>
         </div>
     </footer>
 
